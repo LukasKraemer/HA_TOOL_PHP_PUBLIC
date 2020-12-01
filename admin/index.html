@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/admin.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="img/favicon.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="img/favicon.png" sizes="96x96">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <span id="titel">ADMIN Panel für HA-Tool</span>
+    <div id="background_password">
+    <!--PASSWORT-->
+        <form id="passwortabfrage"> 
+            <span class="biggertext">Bitte geben Sie ihr persönlichen Schlüssel ein </span><br>
+            Schlüssel:<input type="password" class="biggerinput" name="token" id="passwort"><br> <br>
+            mit login aktzeptiere ich die Nutzungsbedienungen und die <a href="../app/datenschutzerklaerung.html">Datenschutzerklärung </a>  <br>
+            <a href="../app/impressum.html">zum Impressum</a> <br><br>
+            <input type="submit" value="Absenden"><br><br><br>
+            
+            <span id="passwordf"></span>
+        </form>
+    </div>
+    <div>
+    </div id="maske">
+    <!--menue-->
+        <div id="funktionsauswahl">
+            <button class="func" onclick="showTokenGEn()">Token Erstellen</button>
+            <button class="func" onclick="showlogs()">API Logs einsehen</button>
+            <button class="func" onclick="showtoken()">Token anzeigen</button>
+            <button class="func" onclick="changetoken()">Token bearbeiten</button>
+        </div>
+
+    
+
+        <form class="forms-eingaben" id="token-gen">
+            <span class="biggertext"> Geben Sie den Token ein, der erstellt werden soll </span><br> <br>
+            
+            Token:<input type="text" name="token_token" id="token_token"><br>
+            Namen:<input type="text" name="token_namen" id="token_namen"><br>
+            Beschreibung:<input type="text" name="token_disc" id="token_disc"><br>
+            Rechte
+            <select name="token_rechte">
+                <option value="0">keine</option>
+                <option value="3">API Datenbestand abfrage</option>
+                <option value="5">API Upload</option>
+                <option value="7">API Programmstart</option>
+                <option value="8">nur Auswertung</option>
+                <option value="9">alles außer Admin Panel</option>
+                <option value="10">ALLE</option>
+
+            </select><br>
+            Aktiv? <input type="checkbox" name="token_activ" id="token_activ"><br>
+            <input type="hidden" name="functionsrequst" value="tokencreate">
+            <input type="submit" id="createToken" value="Absenden">
+        </form>
+
+
+        <form class="forms-eingaben" id="apilog">
+            <span class="biggertext"> Filter für den Logger</span> <br> <br>
+            Startdatum <input type="date" name="datum_start"><br>
+            Enddatum <input type="date" name="datum_ende"><br>
+            Name <span id="nutzerliste_nachladen"></span> <br>
+            Rechte <input type="number" name="rechte" > <br>
+            Aktiv <input type="checkbox" name="aktivetoken"> <br>
+            IP Adresse <input type="text" name="ip-adresse"> <br>
+            Funktionsaufruf: <select name="functionsname">
+
+                <option value="reader">Datenabfrage</option>
+                <option value="filename_reader">Datenabgleich</option>
+                <option value="uploader">Uploader</option>
+                <option value="start">Programmstart</option>
+                <option value="sonstiges">Sonstiges</option>
+            </select>
+            <input type="hidden" name="functionsrequst" value="showlog">
+            <input type="submit" value="Suchen">
+            
+        </form>
+
+        <form class="forms-eingaben" id="token-change">
+            <span class="biggertext"> Token bearbeiten </span><br> <br>
+            TokenID: <span id="id_nachladen"></span><br>
+            Namen:<input type="text" name="token_namen" id="change_namen"><br>
+            Beschreibung:<input type="text" name="token_disc" id="change_disc"><br>
+            Rechte
+            <select id="change_rechte" name="token_rechte">
+                <option value="0">keine</option>
+                <option value="3">API Datenbestand abfrage</option>
+                <option value="5">API Upload</option>
+                <option value="7">API Programmstart</option>
+                <option value="8">nur Auswertung</option>
+                <option value="9">alles außer Admin Panel</option>
+                <option value="10">ALLE</option>
+
+            </select><br>
+            Aktiv? <input type="checkbox" name="token_activ" id="change_activ"><br>
+            <input type="hidden" name="functionsrequst" value="updatevales">
+            <input type="submit" onclick="updatetoken();" id="updatetoken" value="Absenden">
+        </form>
+
+<!--Output-->
+        <div class="forms-eingaben" id="Ausgabe"></div>
+
+    </div>
+<!--Footer-->
+    <div id="footer">
+        <a href="../app/datenschutzerklaerung.html">Datenschutz</a><br>
+        <a href="../app/impressum.html">Impressum</a> <br>
+        2020, <a href="https://github.com/lukaskraemer" target="_blank">Lukas Krämer</a> - nur für Private Nutzung
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.0-alpha/Chart.js"></script>
+    <script src="js/chartsbuilder.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/Chart.min.css">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="img/favicon.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="img/favicon.png" sizes="96x96">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+    <title>Datenabfrage</title>
+</head>
+
+<body>
+
+    <h1>HA- Tool Auswertung</h1>
+    <!--passwort-->
+    <form id="passwortabfrage">
+        Passwort:<input type="password" name="passwort" id="passwort">
+        <input type="submit" value="Absenden">
+        <div id="passwortf"></div>
+    </form>
+    <!--filter-->
+    <div class="frame">
+
+        <form id="myform">
+
+            <input type="date" id="beginn" value="2000-01-01" name="beginn"> Beginn<br>
+            <input type="date" id="ende" value="2030-01-01" name="ende"> Ende<br>
+            <select id="types" name="type"> type
+                <option value="bar">Bar</option>
+                <option value="line">Linie</option>
+                <option value="radar">Radar</option>
+                <option value="pie">Pie</option>
+                <option value="doughnut">doughnut</option>
+                <option value="polarArea">polarArea</option>
+                <option value="bubble">Bubble</option>
+                <option value="scatter">scatter</option>
+            </select>
+
+            <select name="auswerungnr" id="charttyoe">
+                <option value="day">Verlaufsansicht</option>
+                <option value="month">Langzeitauswertung - Monate</option>
+            </select>
+
+            <br>
+
+            <label for="spalten_html">Welche Spalten möchten Sie sehen?:</label>
+            <br>
+            <div id="spalten"></div>
+
+	<div class="filter">
+            Mindeslänge Trips<input type="number" value="0" width="30%" name="filter1_min" id="filter1_min">
+            maximallänge Trips<input type="number" value="100" width="30%" oninput="console.log('test');"
+                name="filter1_max" id="filter1_max">
+	</div>
+            <input type="submit" name="abfrage" value="Absenden">
+            <input type="button" value="reset" onclick="kill_chart();">
+
+        </form>
+        <button id="btn_wertetabelle" onclick="wertetabelle()">Zeige Wertetabelle</button>
+    </div>
+
+    <!--charts-->
+    <div id="chart-container">
+        <canvas id="mycanvas"></canvas>
+    </div>
+    <div id=legende></div>
+
+    <!--Output-->
+    <div id="Ausgabe"></div>
+
+    <!--Footer-->
+    <div id="footer">
+        <a href="../app/datenschutzerklaerung.html">Datenschutz</a><br>
+        <a href="../app/impressum.html">Impressum</a> <br>
+        2020, <a href="https://github.com/lukaskraemer" target="_blank">Lukas Krämer</a> - nur für Private Nutzung
+    </div>
+</body>
+
+</html>

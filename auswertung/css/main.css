@@ -1,0 +1,41 @@
+#auswertung{
+    max-width: 80%;
+    width: 60%;
+    padding-buttom: 5%;
+
+}
+
+
+form{
+    margin-top: 1%;
+    margin-left:1%;
+    border: 1px solid black;
+    display: inline-block;
+    padding: 30px 30px 30px 30px;
+}
+#Ausgabe{
+    width: 100%;
+}
+
+#Ausgabe th {
+    border: 1px solid gray;
+    max-width: 5%;
+}
+#Ausgabe td{
+    border: 1px solid gray;
+}
+
+#footer{
+    position: fixed;    
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    background-color: rgb(83, 32, 32);
+    color: white;
+    text-align: center;
+    }
+#mycanvas{
+    padding-bottom:5%;
+}
